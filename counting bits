@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int bitCnt(int n)
+    {
+        int ans=0;
+        for(int i=0;i<32;i++)
+        {
+            int mask=1<<i;
+            if(n&mask)
+            {
+                ans++;
+            }
+        }
+        return ans;
+    }
+    vector<int> countBits(int n) {
+        vector<int>ans;
+        for(int i=0;i<=n;i++)
+        {
+            int cnt=bitCnt(i);
+            ans.push_back(cnt);
+        }
+        return ans;
+    }
+};
