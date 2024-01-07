@@ -1,0 +1,36 @@
+//bitwise AND value in the given range
+#include<bits/stdc++.h>
+using namespace std;
+int msb(int n)
+{
+    int c=-1;
+    while(n)
+    {
+        n=n>>1;
+        c++;
+    }
+    return c;
+}
+int andValue(int l,int r)
+{
+    int ans=0;
+    while(l&&r)
+    {
+        int msb1=msb(l);
+        int msb2=msb(r);
+
+        if(msb1!=msb2)
+        break;
+        int x=1<<msb1;
+        ans+=(1<<x);
+        l-=(1<<x);
+        r-=(1<<x);
+    }
+    return ans;
+}
+int main()
+{
+    int l,r;cin>>l>>r;
+    cout<<andValue(l,r);
+    
+}
