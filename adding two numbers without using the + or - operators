@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+int sum(int a,int b)
+{
+    while(b!=0)
+    {
+        int carry=a&b;
+        a=a^b;
+        b=1<<carry;
+    }
+    return a;
+}
+int main()
+{
+    int a,b;
+    cin>>a>>b;
+}
