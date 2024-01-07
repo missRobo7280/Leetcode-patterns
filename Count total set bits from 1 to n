@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int max2Pow(int n)
+{
+    int c=-1;
+    while(n)
+    {
+        n=n>>1;
+        c++;
+    }
+    return c;
+}
+int setBitCnt(int n)
+{
+    if(n==0)
+    return n;
+    int x=max2Pow(n);
+    int ans=x*(1<<(x-1))+(n-(1<<x))+1+setBitCnt(n-(1<<x));
+    return ans;
+}
+int main()
+{
+    int n;cin>>n;
+    cout<<setBitCnt(n);
+}
