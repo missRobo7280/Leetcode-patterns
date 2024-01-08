@@ -1,0 +1,23 @@
+//reversing the 32 bits of a given integer
+#include<iostream>
+#define ll long long
+using namespace std;
+ll int revBits(int n)
+{
+    ll int x=0,c=0;//c stores the length of the given number
+    //x stores the answer
+    while(n)
+    {
+        x=x<<1;
+        c++;
+        if(n&1)x=x^1;
+        n=n>>1;
+    }
+    return x<<(32-c);
+
+}
+int main()
+{
+    int n;cin>>n;
+    cout<<revBits(n);
+}
