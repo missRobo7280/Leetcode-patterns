@@ -5,11 +5,16 @@ using namespace std;
 int main()
 {
     int x,p1,p2,n;cin>>x>>p1>>p2>>n;
-    int setBit=(1U<<n)-1;
-    int set1=(x>>p1)&setBit;
-    int set2=(x>>p2)&setBit;
-    int xorred=set1^set2;
-    int xorr=(xorred<<p1) | (xorred<<p2);
-    int ans=xorr^x;
+    //x is the given number     x=47    00101111
+    //p1 and p2 are the positions and n is the number of bits to be swapped
+    int setBit=(1U<<n)-1;//00000111
+    //setBit is the 32 bit integer that contains n number of set bits at the end 
+    int set1=(x>>p1)&setBit;         //00000111
+    //set1 is used to obatin that particular portion from the number starting from positon p1 and ensuring all others are zero bits    
+    int set2=(x>>p2)&setBit;        //00000001
+    //similarly for set2
+    int xorred=set1^set2;               //(00000111) ^ (00000001) = 00000110
+    int xorr=(xorred<<p1) | (xorred<<p2);   //(00000110<<1) | (00000110<<5) = 00001100  |  11000000  =  11001100
+    int ans=xorr^x;  // 11001100   ^ 00101111   =     11100011
     cout<<ans;
 }
