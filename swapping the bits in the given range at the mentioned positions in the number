@@ -1,0 +1,15 @@
+//swapping the bits in the given range at the mentioned positions
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int x,p1,p2,n;cin>>x>>p1>>p2>>n;
+    int setBit=(1U<<n)-1;
+    int set1=(x>>p1)&setBit;
+    int set2=(x>>p2)&setBit;
+    int xorred=set1^set2;
+    int xorr=(xorred<<p1) | (xorred<<p2);
+    int ans=xorr^x;
+    cout<<ans;
+}
